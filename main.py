@@ -46,7 +46,7 @@ def main():
 
     labeled_loader = DataLoader(
         labeled_data,
-        batch_size=32,
+        batch_size=16,
         shuffle=True
     )
 
