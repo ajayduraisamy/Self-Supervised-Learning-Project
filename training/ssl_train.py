@@ -22,7 +22,7 @@ def train_ssl(loader, device):
 
     epoch_losses = []
 
-    for epoch in range(5):
+    for epoch in range(10):
 
         total_loss = 0
 

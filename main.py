@@ -16,12 +16,14 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Using device:", device)
 
-    # Basic transform
+    # Data augmentation for training
     transform = transforms.Compose([
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomCrop(32, padding=4),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2),
         transforms.ToTensor()
     ])
 
-   
     dataset = torchvision.datasets.CIFAR10(
         root="./data",
         train=True,
@@ -31,7 +33,7 @@ def main():
 
     print("Total dataset size:", len(dataset))
 
-   
+    # Create low-label split
     labeled_data, unlabeled_data = create_low_label_split(dataset)
 
     print("Labeled data size:", len(labeled_data))

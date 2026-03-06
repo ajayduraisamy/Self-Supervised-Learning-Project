@@ -32,7 +32,7 @@ def finetune_model(loader, device):
     y_true = []
     y_pred = []
 
-    for epoch in range(5):
+    for epoch in range(15):
 
         total_loss = 0
         correct = 0
